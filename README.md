@@ -10,7 +10,7 @@ Supervised learning for early cancer detection and risk assessment.
 
 ### Problem Setup
 
-Given $n$ patient feature vectors $\mathbf{x}_i \in \mathbb{R}^{p}$ with labels $y_i \in \{0,1\}$, learn a classifier minimizing regularized empirical risk $\hat{f} = \arg\min_f \frac{1}{n}\sum_i \ell(y_i, f(\mathbf{x}_i)) + \lambda\,\Omega(f)$, and select the function class and hyperparameters by cross-validated ROC analysis.
+Given $n$ patient feature vectors $\mathbf{x}_i \in \mathbb{R}^{p}$ with labels $y_i \in \{0,1\}$, learn a classifier minimizing regularized empirical risk $\hat{f} = \arg\min_f \frac{1}{n}\sum_i \ell(y_i, f(\mathbf{x}_i)) + \lambda\ \Omega(f)$, and select the function class and hyperparameters by cross-validated ROC analysis.
 
 ### Dimensionality Reduction & Feature Selection
 
@@ -34,9 +34,9 @@ $$\Longrightarrow\ \max_{\boldsymbol{\alpha}}\ \sum_i \alpha_i - \frac{1}{2}\sum
 
 ### Hyperparameter Search & Evaluation
 
-Grid search over $\Theta$ selects $\theta^{*} = \arg\max_{\theta \in \Theta} \frac{1}{K}\sum_{k=1}^{K} \mathrm{AUC}\big(\mathcal{F}_k^{\mathrm{val}};\, \theta\big)$ via `GridSearchCV`, where
+Grid search over $\Theta$ selects $\theta^{*} = \arg\max_{\theta \in \Theta} \frac{1}{K}\sum_{k=1}^{K} \mathrm{AUC}\big(\mathcal{F}_k^{\mathrm{val}};\  \theta\big)$ via `GridSearchCV`, where
 
-$$\mathrm{AUC} = P\big(f(\mathbf{x}^{+}) > f(\mathbf{x}^{-})\big) = \int_{0}^{1} \mathrm{TPR}\big(\mathrm{FPR}^{-1}(u)\big)\, du$$
+$$\mathrm{AUC} = P\big(f(\mathbf{x}^{+}) > f(\mathbf{x}^{-})\big) = \int_{0}^{1} \mathrm{TPR}\big(\mathrm{FPR}^{-1}(u)\big)\  du$$
 
 is estimated from the ROC curve on held-out folds.
 
@@ -63,9 +63,9 @@ Acceptor Model: [Start] → [Pre-site] → [Consensus] → [Post-site] → [End]
 
 **Decoding (Viterbi)** — the most likely state path via dynamic programming over trellis values
 
-$$\delta_t(j) = \max_{i \in \mathcal{Q}} \left[ \delta_{t-1}(i)\, A_{ij} \right] \cdot B_j(o_t), \qquad \mathbf{q}^{*} = \arg\max_{\mathbf{q}}\ P(\mathbf{q} \mid \mathbf{o}, \lambda).$$
+$$\delta_t(j) = \max_{i \in \mathcal{Q}} \left[ \delta_{t-1}(i)\  A_{ij} \right] \cdot B_j(o_t), \qquad \mathbf{q}^{*} = \arg\max_{\mathbf{q}}\ P(\mathbf{q} \mid \mathbf{o}, \lambda).$$
 
-**Likelihood (Forward algorithm)** — $P(\mathbf{o} \mid \lambda) = \sum_j \alpha_T(j)$ with the recursion $\alpha_t(j) = \left[\sum_i \alpha_{t-1}(i)\, A_{ij}\right] B_j(o_t)$, computed in $O(T\,|\mathcal{Q}|^2)$.
+**Likelihood (Forward algorithm)** — $P(\mathbf{o} \mid \lambda) = \sum_j \alpha_T(j)$ with the recursion $\alpha_t(j) = \left[\sum_i \alpha_{t-1}(i)\  A_{ij}\right] B_j(o_t)$, computed in $O(T\ |\mathcal{Q}|^2)$.
 
 **Parameter estimation** — Baum–Welch (EM): expected transition/emission counts from posterior state probabilities, iterated to a local optimum of $P(\mathbf{o} \mid \lambda)$.
 
@@ -83,7 +83,7 @@ Statistical genomics workflows on Affymetrix expression arrays.
 
 Raw probe intensities pass through the RMA-style pipeline: background correction, quantile normalization (forcing a common empirical CDF across arrays), and median-polish summarization,
 
-$$\log_2 \mathrm{PM}_{gj} = \mu_g + a_j + \varepsilon_{gj} \quad \Longrightarrow \quad \hat{\mu}_g = \operatorname{median\text{-}polish}\big(\log_2 \mathrm{PM}_{g\cdot}\big),$$
+$$\log_2 \mathrm{PM}_{gj} = \mu_g + a_j + \varepsilon_{gj} \quad \Longrightarrow \quad \hat{\mu}_g = \mathrm{median\text{-}polish}\big(\log_2 \mathrm{PM}_{g\cdot}\big),$$
 
 yielding one $\log_2$ expression estimate per probeset $g$ and array $j$.
 
@@ -95,7 +95,7 @@ $$\mathbb{E}[\mathbf{y}_g] = \mathbf{X}\boldsymbol{\beta}_g,$$
 
 and replace the raw variance estimator $s_g^2$ with an **empirical-Bayes moderated** version that shrinks toward the prior estimated across all genes:
 
-$$\tilde{s}_g^{\,2} = \frac{d_0 s_0^2 + d_g s_g^2}{d_0 + d_g}, \qquad \tilde{t}_g = \frac{\hat{\beta}_g}{\tilde{s}_g \sqrt{v_g}} \;\sim\; t_{\,d_0 + d_g}\ \text{under } H_0.$$
+$$\tilde{s}_g^{\ 2} = \frac{d_0 s_0^2 + d_g s_g^2}{d_0 + d_g}, \qquad \tilde{t}_g = \frac{\hat{\beta}_g}{\tilde{s}_g \sqrt{v_g}} \ \sim\  t_{\ d_0 + d_g}\ \text{under } H_0.$$
 
 This moderated $\tilde{t}$-statistic is the key to stable inference with small $n$: genes borrow variance information from the whole transcriptome.
 
