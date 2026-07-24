@@ -14,7 +14,7 @@ Given $n$ patient feature vectors $\mathbf{x}_i \in \mathbb{R}^{p}$ with labels 
 
 ### Dimensionality Reduction & Feature Selection
 
-**PCA** finds the orthogonal projection maximizing retained variance — the top-$k$ eigenvectors of the sample covariance:
+**PCA** finds the orthogonal projection maximizing retained variance — the top-k eigenvectors of the sample covariance:
 
 $$\mathbf{C} = \frac{1}{n-1}\mathbf{X}_c^{\top}\mathbf{X}_c = \mathbf{V}\boldsymbol{\Lambda}\mathbf{V}^{\top}, \qquad \mathbf{T} = \mathbf{X}_c \mathbf{V}_{(k)}, \qquad \max_{k}\ \frac{\sum_{j=1}^{k}\lambda_j}{\sum_{j=1}^{p}\lambda_j}.$$
 
